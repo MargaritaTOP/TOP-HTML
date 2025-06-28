@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме Кожетьевой М.В.</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background-color: #000000;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #ffffff;
+            border-left: 4px solid #ffffff;
+            padding-left: 10px;
+            margin-top: 25px;
+        }
+
+        .personal-info {
+            background-color: #121212;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .experience-item {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 2px solid #333333;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .experience-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .date {
+            font-weight: bold;
+            color: #aaaaaa;
+        }
+
+        .position {
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .organization {
+            font-style: italic;
+            color: #cccccc;
+        }
+
+        .education {
+            margin-bottom: 20px;
+        }
+
+        .education p {
+            margin: 8px 0;
+            color: #ffffff;
+        }
+
+        .experience-detail {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            margin-bottom: 8px;
+        }
+
+        .experience-detail.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <h1>Кожетьева Маргарита Вячеславовна</h1>
+
+    <div class="personal-info">
+        <p><strong>Дата рождения:</strong> 15.02.1980</p>
+    </div>
+
+    <h2>Образование</h2>
+    <div class="education">
+        <p>2007 - Институт инфраструктуры предпринимательства</p>
+        <p>2025 - Компьютерная Академия ТОП, диплом о повышении квалификации по специальности "Разработчик программного обеспечения"</p>
+    </div>
+
+    <h2>Опыт работы</h2>
+
+    <div class="experience-item">
+        <div class="experience-detail">
+            <p><span class="date">04.02.2002 - 02.06.2005</span></p>
+        </div>
+        <div class="experience-detail">
+            <p><span class="position">Бухгалтер</span> в <span class="organization">Орехово-Зуевский лесхоз</span></p>
+        </div>
+        <div class="experience-detail">
+            <p>Уволена по собственному желанию</p>
+        </div>
+    </div>
+
+    <div class="experience-item">
+        <div class="experience-detail">
+            <p><span class="date">23.09.2005 - 23.04.2020</span></p>
+        </div>
+        <div class="experience-detail">
+            <p>Государственная гражданская служба в <span class="organization">Управлении Федерального агентства по государственным резервам по Центральному Федеральному округу</span></p>
+        </div>
+
+        <div style="margin-left: 20px;">
+            <div class="experience-detail">
+                <p><span class="date">23.09.2005</span> - принята на должность <span class="position">специалиста 1 разряда отдела бухгалтерского учёта и контрольно-ревизионной работы</span></p>
+            </div>
+            <div class="experience-detail">
+                <p><span class="date">08.06.2009</span> - назначена <span class="position">служащей отдела бухгалтерского учёта и бюджетной отчётности</span></p>
+            </div>
+            <div class="experience-detail">
+                <p><span class="date">18.01.2010</span> - присвоен классный чин <span class="position">референта государственной гражданской службы Российской Федерации 3 класса</span></p>
+            </div>
+            <div class="experience-detail">
+                <p><span class="date">01.03.2010</span> - переведена на должность <span class="position">специалиста-эксперта отдела бухгалтерского учёта и бюджетной отчётности</span></p>
+            </div>
+            <div class="experience-detail">
+                <p><span class="date">26.10.2010</span> - назначена на должность <span class="position">ведущего специалиста-эксперта отдела бухгалтерского учёта и бюджетной отчётности</span></p>
+            </div>
+            <div class="experience-detail">
+                <p><span class="date">25.07.2011</span> - присвоен классный чин <span class="position">референта государственной гражданской службы Российской Федерации 2 класса</span></p>
+            </div>
+            <div class="experience-detail">
+                <p><span class="date">01.09.2011</span> - назначена на должность <span class="position">главного специалиста-эксперта отдела бухгалтерского учёта и бюджетной отчётности</span></p>
+            </div>
+            <div class="experience-detail">
+                <p><span class="date">01.10.2012</span> - назначена на должность <span class="position">главного специалиста-эксперта отдела бухгалтерского учёта и отчётности</span></p>
+            </div>
+            <div class="experience-detail">
+                <p><span class="date">23.04.2020</span> - уволена с государственной гражданской службы по собственному желанию</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="experience-item">
+        <div class="experience-detail">
+            <p><span class="date">04.07.2020 - настоящее время</span></p>
+        </div>
+        <div class="experience-detail">
+            <p><span class="position">Бухгалтер</span> в <span class="organization">ИП Чистов Ю.Н.</span></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const experienceItems = document.querySelectorAll('.experience-item');
+
+            function showMainItems() {
+                experienceItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('visible');
+
+                        setTimeout(() => showItemDetails(item), 300);
+                    }, index * 200);
+                });
+            }
+
+
+            function showItemDetails(item) {
+                const details = item.querySelectorAll('.experience-detail');
+                details.forEach((detail, index) => {
+                    setTimeout(() => {
+                        detail.classList.add('visible');
+                    }, index * 300);
+                });
+            }
+
+
+            showMainItems();
+
+
+            window.addEventListener('scroll', function() {
+                const windowHeight = window.innerHeight;
+                experienceItems.forEach(item => {
+                    const itemRect = item.getBoundingClientRect();
+                    if (itemRect.top < windowHeight && !item.classList.contains('visible')) {
+                        item.classList.add('visible');
+                        showItemDetails(item);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ГлюкоКонтроль - Дневник диабетика</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Иконки Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .glucose-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .food-card {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .meds-card {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .chart-container {
+            height: 250px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 200px;
+            }
+        }
+        .quick-btn {
+            transition: all 0.3s ease;
+        }
+        .quick-btn:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Навигационное меню -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-droplet-half"></i> ГлюкоКонтроль
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="bi bi-house-door"></i> Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#history"><i class="bi bi-clock-history"></i> История</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#settings"><i class="bi bi-gear"></i> Настройки</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <!-- Приветствие и дата -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="fw-bold">Добрый день, Александр!</h2>
+                <p class="text-muted" id="current-date">Загрузка даты...</p>
+            </div>
+        </div>
+
+        <!-- Быстрые кнопки -->
+        <div class="row mb-4 g-3">
+            <div class="col-md-4">
+                <button class="btn btn-primary w-100 quick-btn py-3" data-bs-toggle="modal" data-bs-target="#sugarModal">
+                    <i class="bi bi-droplet fs-4"></i><br>
+                    Уровень сахара
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-success w-100 quick-btn py-3" data-bs-toggle="modal" data-bs-target="#foodModal">
+                    <i class="bi bi-egg-fried fs-4"></i><br>
+                    Приём пищи
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-warning w-100 quick-btn py-3" data-bs-toggle="modal" data-bs-target="#medsModal">
+                    <i class="bi bi-capsule fs-4"></i><br>
+                    Лекарства
+                </button>
+            </div>
+        </div>
+
+        <!-- Карточки с последними записями -->
+        <div class="row mb-4 g-3">
+            <!-- Последний сахар -->
+            <div class="col-md-4">
+                <div class="card glucose-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-droplet"></i> Последний замер</h5>
+                        <div class="d-flex align-items-center">
+                            <h2 class="fw-bold me-3" id="last-glucose">5.4</h2>
+                            <span class="badge bg-success rounded-pill">Норма</span>
+                        </div>
+                        <p class="text-muted mb-0">Сегодня в 08:30</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Последний приём пищи -->
+            <div class="col-md-4">
+                <div class="card food-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-egg-fried"></i> Последний приём пищи</h5>
+                        <h6 class="fw-bold" id="last-food">Овсянка с ягодами</h6>
+                        <p class="mb-1"><span class="fw-bold">Углеводы:</span> 45 г</p>
+                        <p class="text-muted mb-0">Сегодня в 09:15</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Последний приём лекарств -->
+            <div class="col-md-4">
+                <div class="card meds-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-capsule"></i> Последний приём лекарств</h5>
+                        <h6 class="fw-bold" id="last-meds">Инсулин (короткий)</h6>
+                        <p class="mb-1"><span class="fw-bold">Доза:</span> 8 ед.</p>
+                        <p class="text-muted mb-0">Сегодня в 09:20</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- График уровня сахара -->
+        <div class="card mb-4">
+            <div class="card-header bg-white">
+                <h5 class="mb-0"><i class="bi bi-graph-up"></i> Динамика уровня глюкозы</h5>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="glucoseChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- История записей -->
+        <div class="card mb-4" id="history">
+            <div class="card-header bg-white">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="bi bi-clock-history"></i> История записей</h5>
+                    <div>
+                        <select class="form-select form-select-sm" style="width: auto;">
+                            <option>Сегодня</option>
+                            <option>Неделя</option>
+                            <option>Месяц</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Время</th>
+                                <th>Тип</th>
+                                <th>Значение</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="records-table">
+                            <!-- Пример записи -->
+                            <tr>
+                                <td>08:30</td>
+                                <td><span class="badge bg-primary">Сахар</span></td>
+                                <td>5.4 ммоль/л</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>09:15</td>
+                                <td><span class="badge bg-success">Еда</span></td>
+                                <td>Овсянка (45г углеводов)</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>09:20</td>
+                                <td><span class="badge bg-warning text-dark">Лекарство</span></td>
+                                <td>Инсулин (8 ед.)</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальные окна для ввода данных -->
+    <!-- 1. Ввод уровня сахара -->
+    <div class="modal fade" id="sugarModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-droplet"></i> Уровень сахара</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="sugarForm">
+                        <div class="mb-3">
+                            <label class="form-label">Значение (ммоль/л)</label>
+                            <input type="number" step="0.1" class="form-control form-control-lg" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Время измерения</label>
+                            <input type="datetime-local" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Примечание</label>
+                            <select class="form-select">
+                                <option>Натощак</option>
+                                <option>После еды (1 час)</option>
+                                <option>После еды (2 часа)</option>
+                                <option>Перед сном</option>
+                                <option>Ночью</option>
+                            </select>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-save"></i> Сохранить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Ввод приёма пищи -->
+    <div class="modal fade" id="foodModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-egg-fried"></i> Приём пищи</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="foodForm">
+                        <div class="mb-3">
+                            <label class="form-label">Название блюда/продукта</label>
+                            <input type="text" class="form-control form-control-lg" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Углеводы (г)</label>
+                                <input type="number" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Калории (ккал)</label>
+                                <input type="number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Время приёма</label>
+                            <input type="datetime-local" class="form-control" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="bi bi-save"></i> Сохранить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Ввод лекарств -->
+    <div class="modal fade" id="medsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-capsule"></i> Приём лекарств</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="medsForm">
+                        <div class="mb-3">
+                            <label class="form-label">Тип лекарства</label>
+                            <select class="form-select form-select-lg">
+                                <option>Инсулин (короткий)</option>
+                                <option>Инсулин (длинный)</option>
+                                <option>Метформин</option>
+                                <option>Другое</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Дозировка</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-lg" required>
+                                <span class="input-group-text">ед.</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Время приёма</label>
+                            <input type="datetime-local" class="form-control" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-warning btn-lg">
+                                <i class="bi bi-save"></i> Сохранить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer class="bg-light py-3 mt-4">
+        <div class="container text-center text-muted">
+            <p class="mb-0">ГлюкоКонтроль © 2025 | Дневник контроля диабета</p>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Установка текущей даты
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('ru-RU', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Инициализация графика
+        const ctx = document.getElementById('glucoseChart').getContext('2d');
+        const glucoseChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00'],
+                datasets: [{
+                    label: 'Уровень глюкозы (ммоль/л)',
+                    data: [4.9, 5.1, 5.4, 6.2, 5.8, 5.3, 5.1, 5.0],
+                    borderColor: '#0d6efd',
+                    backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        min: 3,
+                        max: 10,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+
+        // Обработка форм (пример для сахара)
+        document.getElementById('sugarForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Здесь будет код сохранения данных
+            alert('Данные о сахаре сохранены!');
+            bootstrap.Modal.getInstance(document.getElementById('sugarModal')).hide();
+        });
+
+        // Аналогично для других форм
+        document.getElementById('foodForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Данные о питании сохранены!');
+            bootstrap.Modal.getInstance(document.getElementById('foodModal')).hide();
+        });
+
+        document.getElementById('medsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Данные о лекарствах сохранены!');
+            bootstrap.Modal.getInstance(document.getElementById('medsModal')).hide();
+        });
+    </script>
+</body>
+</html>

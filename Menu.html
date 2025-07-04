@@ -1,0 +1,40 @@
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Ter MENU</title>
+    <style>
+
+        menu.toolbar {
+            display: flex;
+            list-style: none;
+
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        menu.toolbar li {
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        menu.toolbar li:hover {
+            background-color: #e0f7fa;
+            color: #00796b;
+        }
+        menu.toolbar li:active {
+            background-color: #b2ebf2;
+        }
+    </style>
+</head>
+<body>
+    <p><strong>Выбор кухни:</strong></p>
+    <menu class="toolbar" label="текст">
+        <li>Русская</li>
+        <li>Украинская</li>
+        <li>Молдавская</li>
+        <li>Кавказская</li>
+        <li>Прибалтийская</li>
+    </menu>
+</body>
+</html>

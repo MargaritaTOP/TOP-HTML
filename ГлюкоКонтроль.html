@@ -6,7 +6,7 @@
     <title>ГлюкоКонтроль - Дневник диабетика</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Иконки Bootstrap -->
+    <!-- Иконки  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         .glucose-card {
@@ -41,7 +41,7 @@
     </style>
 </head>
 <body class="bg-light">
-    <!-- Навигационное меню -->
+    <!--  меню -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <!-- Быстрые кнопки -->
+        <!-- быстрые кнопки -->
         <div class="row mb-4 g-3">
             <div class="col-md-4">
                 <button class="btn btn-primary w-100 quick-btn py-3" data-bs-toggle="modal" data-bs-target="#sugarModal">
@@ -97,9 +97,9 @@
             </div>
         </div>
 
-        <!-- Карточки с последними записями -->
+        <!-- карточки с последними записями -->
         <div class="row mb-4 g-3">
-            <!-- Последний сахар -->
+            <!-- последний сахар -->
             <div class="col-md-4">
                 <div class="card glucose-card h-100">
                     <div class="card-body">
@@ -113,7 +113,7 @@
                 </div>
             </div>
 
-            <!-- Последний приём пищи -->
+            <!-- последний приём пищи -->
             <div class="col-md-4">
                 <div class="card food-card h-100">
                     <div class="card-body">
@@ -125,7 +125,7 @@
                 </div>
             </div>
 
-            <!-- Последний приём лекарств -->
+            <!-- последний приём лекарств -->
             <div class="col-md-4">
                 <div class="card meds-card h-100">
                     <div class="card-body">
@@ -138,7 +138,7 @@
             </div>
         </div>
 
-        <!-- График уровня сахара -->
+        <!-- уровень сахара график -->
         <div class="card mb-4">
             <div class="card-header bg-white">
                 <h5 class="mb-0"><i class="bi bi-graph-up"></i> Динамика уровня глюкозы</h5>
@@ -150,7 +150,7 @@
             </div>
         </div>
 
-        <!-- История записей -->
+        <!--  записи -->
         <div class="card mb-4" id="history">
             <div class="card-header bg-white">
                 <div class="d-flex justify-content-between align-items-center">
@@ -176,7 +176,7 @@
                             </tr>
                         </thead>
                         <tbody id="records-table">
-                            <!-- Пример записи -->
+                            <!-- пример записи -->
                             <tr>
                                 <td>08:30</td>
                                 <td><span class="badge bg-primary">Сахар</span></td>
@@ -211,8 +211,8 @@
         </div>
     </div>
 
-    <!-- Модальные окна для ввода данных -->
-    <!-- 1. Ввод уровня сахара -->
+    <!--  окна для ввода данных -->
+    <!-- 1. вод уровня сахара -->
     <div class="modal fade" id="sugarModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -251,7 +251,7 @@
         </div>
     </div>
 
-    <!-- 2. Ввод приёма пищи -->
+    <!-- 2. ввод приёма пищи -->
     <div class="modal fade" id="foodModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -290,7 +290,7 @@
         </div>
     </div>
 
-    <!-- 3. Ввод лекарств -->
+    <!-- 3. ввод лекарств -->
     <div class="modal fade" id="medsModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -331,18 +331,18 @@
         </div>
     </div>
 
-    <!-- Подвал -->
+
     <footer class="bg-light py-3 mt-4">
         <div class="container text-center text-muted">
             <p class="mb-0">ГлюкоКонтроль © 2025 | Дневник контроля диабета</p>
         </div>
     </footer>
 
-    <!-- Скрипты -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Установка текущей даты
+
         document.getElementById('current-date').textContent = new Date().toLocaleDateString('ru-RU', {
             weekday: 'long',
             year: 'numeric',
@@ -350,7 +350,7 @@
             day: 'numeric'
         });
 
-        // Инициализация графика
+
         const ctx = document.getElementById('glucoseChart').getContext('2d');
         const glucoseChart = new Chart(ctx, {
             type: 'line',
@@ -381,15 +381,15 @@
             }
         });
 
-        // Обработка форм (пример для сахара)
+
         document.getElementById('sugarForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Здесь будет код сохранения данных
+
             alert('Данные о сахаре сохранены!');
             bootstrap.Modal.getInstance(document.getElementById('sugarModal')).hide();
         });
 
-        // Аналогично для других форм
+
         document.getElementById('foodForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Данные о питании сохранены!');

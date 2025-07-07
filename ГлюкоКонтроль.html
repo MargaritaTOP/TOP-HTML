@@ -2,11 +2,11 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>ГлюкоКонтроль - Дневник диабетика</title>
-    <!-- Bootstrap 5 CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Иконки  -->
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         .glucose-card {
@@ -41,12 +41,11 @@
     </style>
 </head>
 <body class="bg-light">
-    <!--  меню -->
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
-                <i class="bi bi-droplet-half"></i> ГлюкоКонтроль
-            </a>
+                <i class="bi bi-droplet-half"></i> ГлюкоКонтроль</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -67,7 +66,7 @@
     </nav>
 
     <div class="container py-4">
-        <!-- Приветствие и дата -->
+
         <div class="row mb-4">
             <div class="col-12">
                 <h2 class="fw-bold">Добрый день, Александр!</h2>
@@ -75,7 +74,7 @@
             </div>
         </div>
 
-        <!-- быстрые кнопки -->
+
         <div class="row mb-4 g-3">
             <div class="col-md-4">
                 <button class="btn btn-primary w-100 quick-btn py-3" data-bs-toggle="modal" data-bs-target="#sugarModal">
@@ -97,9 +96,9 @@
             </div>
         </div>
 
-        <!-- карточки с последними записями -->
+
         <div class="row mb-4 g-3">
-            <!-- последний сахар -->
+
             <div class="col-md-4">
                 <div class="card glucose-card h-100">
                     <div class="card-body">
@@ -113,7 +112,7 @@
                 </div>
             </div>
 
-            <!-- последний приём пищи -->
+
             <div class="col-md-4">
                 <div class="card food-card h-100">
                     <div class="card-body">
@@ -125,7 +124,7 @@
                 </div>
             </div>
 
-            <!-- последний приём лекарств -->
+
             <div class="col-md-4">
                 <div class="card meds-card h-100">
                     <div class="card-body">
@@ -138,7 +137,7 @@
             </div>
         </div>
 
-        <!-- уровень сахара график -->
+
         <div class="card mb-4">
             <div class="card-header bg-white">
                 <h5 class="mb-0"><i class="bi bi-graph-up"></i> Динамика уровня глюкозы</h5>
@@ -150,7 +149,7 @@
             </div>
         </div>
 
-        <!--  записи -->
+
         <div class="card mb-4" id="history">
             <div class="card-header bg-white">
                 <div class="d-flex justify-content-between align-items-center">
@@ -176,7 +175,7 @@
                             </tr>
                         </thead>
                         <tbody id="records-table">
-                            <!-- пример записи -->
+
                             <tr>
                                 <td>08:30</td>
                                 <td><span class="badge bg-primary">Сахар</span></td>
@@ -211,8 +210,7 @@
         </div>
     </div>
 
-    <!--  окна для ввода данных -->
-    <!-- 1. вод уровня сахара -->
+
     <div class="modal fade" id="sugarModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -251,7 +249,7 @@
         </div>
     </div>
 
-    <!-- 2. ввод приёма пищи -->
+
     <div class="modal fade" id="foodModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -290,7 +288,7 @@
         </div>
     </div>
 
-    <!-- 3. ввод лекарств -->
+
     <div class="modal fade" id="medsModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">

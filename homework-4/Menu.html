@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Меню с подменю с использованием Bootstrap</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#home" data-bs-toggle="tab">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="categoriesDropdown" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Categories</a>
+                <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#">Man</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#man-shirts" data-bs-toggle="tab">Shirts</a></li>
+                            <li><a class="dropdown-item" href="#man-pants" data-bs-toggle="tab">Pants</a></li>
+                            <li><a class="dropdown-item" href="#man-shoes" data-bs-toggle="tab">Shoes</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#">Women</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#women-dress" data-bs-toggle="tab">Dress</a></li>
+                            <li><a class="dropdown-item" href="#women-pants" data-bs-toggle="tab">Pants</a></li>
+                            <li><a class="dropdown-item" href="#women-shoes" data-bs-toggle="tab">Shoes</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#">Kids</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#kids-dress" data-bs-toggle="tab">Dress</a></li>
+                            <li><a class="dropdown-item" href="#kids-shirts" data-bs-toggle="tab">Shirts</a></li>
+                            <li><a class="dropdown-item" href="#kids-pants" data-bs-toggle="tab">Pants</a></li>
+                            <li><a class="dropdown-item" href="#kids-shoes" data-bs-toggle="tab">Shoes</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#about" data-bs-toggle="tab">About</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#contacts" data-bs-toggle="tab">Contacts</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="home">
+                <h4>Welcome to Our Store</h4>
+                <p>Check out our featured products:</p>
+                <div class="products-container" data-category="all-products"></div>
+            </div>
+
+            <div class="tab-pane fade" id="man-shirts">
+                <h4>Man - Shirts</h4>
+                <p>Наша навая коллекция мужских рубашек будет доступна очень скоро.</p>
+            </div>
+
+            <div class="tab-pane fade" id="man-pants">
+                <h4>Man - Pants</h4>
+                <p>Наша навая коллекция мужских брюк будет доступна очень скоро.</p>
+            </div>
+
+            <div class="tab-pane fade" id="man-shoes">
+                <h4>Man - Shoes</h4>
+                <p>Наша навая коллекция мужской обуви будет доступна очень скоро.</p>
+            </div>
+
+            <div class="tab-pane fade" id="women-dress">
+                <h4>Women - Dress</h4>
+                <p>Наша навая коллекция женских платьев будет доступна очень скоро.</p>
+            </div>
+
+            <div class="tab-pane fade" id="women-pants">
+                <h4>Women - Pants</h4>
+                <p>Наша навая коллекция женских брюк будет доступна очень скоро.</p>
+            </div>
+
+            <div class="tab-pane fade" id="women-shoes">
+                <h4>Women - Shoes</h4>
+                <p>Наша навая коллекция женской обуви будет доступна очень скоро.</p>
+            </div>
+
+            <div class="tab-pane fade" id="kids-dress">
+                <h4>Kids - Dress</h4>
+                <p>Наша навая коллекция детских платьев будет доступна очень скоро.</p>
+            </div>
+
+            <div class="tab-pane fade" id="kids-shirts">
+                <h4>Kids - Shirts</h4>
+                <p>Наша навая коллекция детских рубашек будет доступна очень скоро.</p>
+            </div>
+
+            <div class="tab-pane fade" id="kids-pants">
+                <h4>Kids - Pants</h4>
+                <p>Наша навая коллекция детских брюк будет доступна очень скоро.</p>
+            </div>
+
+            <div class="tab-pane fade" id="kids-shoes">
+                <h4>Kids - Shoes</h4>
+                <p>Наша навая коллекция детской обуви будет доступна очень скоро.</p>
+            </div>
+
+            <div class="tab-pane fade" id="about">
+                <h4>About Us</h4>
+                <p>Lorem ipsum dolor sit amet, ac augue quis ante blandit blandit eu esim non ex. Donec a purus non porttitor malesuada. Morbi feugiat sodales elementum purus, eu rutrum isus bibendum ipsum, vel scelerisque irpis dictum vel. Maecenas nibh elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+
+            <div class="tab-pane fade" id="contacts">
+                <h4>Contacts</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
